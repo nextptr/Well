@@ -1,0 +1,5 @@
+D:\GitWell\Well\WpfApp\CommonEventAggregator\bin\Debug\CommonEventAggregator.dll
+D:\GitWell\Well\WpfApp\CommonEventAggregator\bin\Debug\CommonEventAggregator.pdb
+D:\GitWell\Well\WpfApp\CommonEventAggregator\obj\Debug\CommonEventAggregator.csproj.CoreCompileInputs.cache
+D:\GitWell\Well\WpfApp\CommonEventAggregator\obj\Debug\CommonEventAggregator.dll
+D:\GitWell\Well\WpfApp\CommonEventAggregator\obj\Debug\CommonEventAggregator.pdb

@@ -1,0 +1,2 @@
+D:\GitWell\Well\WpfApp\IOModel\obj\Debug\IOModel.csprojResolveAssemblyReference.cache
+D:\GitWell\Well\WpfApp\IOModel\obj\Debug\IOModel.csproj.CoreCompileInputs.cache

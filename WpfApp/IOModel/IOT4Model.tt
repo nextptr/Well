@@ -1,0 +1,204 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="IOModel" #>
+<#@ output extension=".cs" #>
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO; 
+using System.Linq; 
+using System.Text;
+using System.Threading.Tasks; 
+using IOModel;
+
+namespace IOModel
+{
+    public partial class ConfigIO
+    {
+		//参数下限字典
+		public static Dictionary<string, int> param_min_dict = new Dictionary<string, int>();
+		
+		//参数上限字典
+		public static Dictionary<string, int> param_max_dict = new Dictionary<string, int>();
+
+<#
+	 
+	string filename = this.Host.ResolvePath(@"..\..\Ref\PLCResolve\"+"plc_config.txt");
+	using(StreamReader sr = new StreamReader(filename))
+	{
+		string config = sr.ReadToEnd();
+		var l = RunResolver.RunListener(config);
+#>
+		
+		static ConfigIO()
+		{
+<#		foreach(var key in l.param_min_dict) 
+		{ #>
+			param_min_dict.Add("<#=key.Key#>", Convert.ToInt32("<#=key.Value#>"));
+<#		}
+#>
+<#		foreach(var key in l.param_max_dict) 
+		{ #>
+			param_max_dict.Add("<#=key.Key#>", Convert.ToInt32("<#=key.Value#>"));
+<#		}
+
+#>
+		}
+
+		#region Cmd
+<#
+		foreach(var q in l.CmdInfoList)
+        {
+			if(
+			q.GroupName == "Alarms" 
+			|| q.GroupName == "Warnings" 
+			|| q.GroupName == "Paras"
+			|| q.GroupName == "Positions"
+			)
+				continue;
+#>		
+		[IOProp(GroupName : "<#=q.GroupName#>", ShowName = "<#=q.ShowName#>", IOIndex = <#=q.IOIndex#>, Feature = "<#=q.LineNumber#>")]
+		public class <#=q.VariableName #> : IOParam<<#=q.VariableType#>>
+		{
+			static <#=q.VariableName #>()
+			{
+<#				if(q.Tags.Count != 0)
+				{
+#>				tags = new List<string>();
+<#				}
+#>
+<#				foreach(var tag in q.Tags) 
+				{
+#>				tags.Add("<#=tag#>");
+<#				} #>
+			}
+
+			public static IEnumerable<IOParam> GetFromCollection()
+			{
+				<# foreach(var tag in q.Tags) { #>int <#=tag#> = 0;<# } #>
+				
+<#
+				int ind = 0;
+				foreach(var tag in q.Tags) 
+				{ 
+#>
+				for(int i<#=ind#> = param_min_dict["<#=tag#>"]; i<#=ind#> <= param_max_dict["<#=tag#>"]; i<#=ind#>++)
+				{
+					<#=tag#> = i<#=ind#>;
+<# 
+					ind++;
+				}
+#>
+					string cmd_str = "<#=q.VariableName #>";
+					cmd_str = cmd_str <# foreach(var tag in q.Tags) { #> + "_" + <#=tag#>.ToString() <# } #>;
+					if(!ConfigDataHelper.HasCmd(cmd_str))
+						throw new Exception("设置参数<#=q.VariableName#>失败");
+
+					yield return new <#=q.VariableName #>(new List<int>(){ <# foreach(var tag in q.Tags)  {  #><#=tag#>, <# } #>})
+					{
+						CanSetValue = Boolean.Parse("<#=q.CanSet.ToString()#>"),
+						CanGetValue = Boolean.Parse("<#=q.CanGet.ToString()#>")
+					};
+<#				foreach(var tag in q.Tags) { 
+#> 
+				}
+<# } #>
+				yield break;
+			}
+
+			//ind_arr为空时表示IO不是数组类型
+			public static IOParam GetFromCollection(List<int> ind_arr = null)
+			{
+				string cmd_str = "<#=q.Name #>";
+				foreach(int param in ind_arr)
+				{
+					cmd_str += "_" + param.ToString();
+				}
+				if(!ConfigDataHelper.HasCmd(cmd_str))
+					throw new Exception("设置参数<#=q.VariableName#>失败");
+				return new <#=q.VariableName #>(ind_arr)
+				{
+					CanSetValue = Boolean.Parse("<#=q.CanSet.ToString()#>"),
+					CanGetValue = Boolean.Parse("<#=q.CanGet.ToString()#>")
+				};
+			}
+			
+			protected <#=q.VariableName #>(List<int> ind_arr)
+			{
+				param_list = ind_arr;
+				string cmd_str = "<#=q.Name #>";
+				foreach(int param in ind_arr)
+				{
+					cmd_str += "_" + param.ToString();
+				}
+				ConfigDataHelper.SetUpdateDelegate(cmd_str, UpdateWhenDataChanged);
+			}
+			
+			~<#=q.VariableName #>()
+			{
+				string cmd_str = "<#=q.Name #>";
+				foreach(int param in param_list)
+				{
+					cmd_str += "_" + param.ToString();
+				}
+				ConfigDataHelper.DeleteUpdateDelegate(cmd_str, UpdateWhenDataChanged);
+			}
+
+			private void UpdateWhenDataChanged(object sender, PropertyChangedEventArgs e)
+            {
+                //重新取数据
+                var p = this.GetValue();
+                //触发PropertyChanged事件
+                RaisePropertyChanged(e.PropertyName);
+            }
+
+			/// <summary>
+			/// 设置参数
+			/// </summary>
+			/// <returns></returns>
+			protected override void SetValue(<#=q.VariableType#> <#=q.VariableName #>)
+			{
+				string cmd_str = "<#=q.Name #>";
+				foreach(int param in param_list)
+				{
+					cmd_str += "_" + param.ToString();
+				}
+				if(!ConfigDataHelper.SetCmd(cmd_str, <#=q.VariableName #>))
+					throw new Exception("设置参数<#=q.VariableName#>失败");
+				return;
+			}
+			
+			/// <summary>
+			/// 获取当前参数
+			/// </summary>
+			/// <returns>返回一个值，指示参数是否正常读出</returns>
+			protected override <#=q.VariableType#> GetValue()
+			{
+				string cmd_str = "<#=q.Name #>";
+				foreach(int param in param_list)
+				{
+					cmd_str += "_" + param.ToString();
+				}
+				if(!ConfigDataHelper.GetCmd(cmd_str, out <#=q.VariableType#> <#=q.VariableName #>))
+					throw new Exception("获取参数<#=q.VariableName#>失败");
+				return <#=q.VariableName #>;
+			}
+
+		}
+<#
+		}
+#>
+		
+		#endregion
+<#
+	}
+#>
+
+    }
+}

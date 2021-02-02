@@ -1,0 +1,17 @@
+D:\GitWell\Well\WpfApp\ListGroupItem\bin\Debug\ListGroupItem.exe.config
+D:\GitWell\Well\WpfApp\ListGroupItem\bin\Debug\ListGroupItem.exe
+D:\GitWell\Well\WpfApp\ListGroupItem\bin\Debug\ListGroupItem.pdb
+D:\GitWell\Well\WpfApp\ListGroupItem\obj\Debug\ListGroupItem.csprojResolveAssemblyReference.cache
+D:\GitWell\Well\WpfApp\ListGroupItem\obj\Debug\MainWindow.g.cs
+D:\GitWell\Well\WpfApp\ListGroupItem\obj\Debug\App.g.cs
+D:\GitWell\Well\WpfApp\ListGroupItem\obj\Debug\ListGroupItem_MarkupCompile.cache
+D:\GitWell\Well\WpfApp\ListGroupItem\obj\Debug\ListGroupItem_MarkupCompile.lref
+D:\GitWell\Well\WpfApp\ListGroupItem\obj\Debug\MainWindow.baml
+D:\GitWell\Well\WpfApp\ListGroupItem\obj\Debug\ListGroupItem.g.resources
+D:\GitWell\Well\WpfApp\ListGroupItem\obj\Debug\ListGroupItem.Properties.Resources.resources
+D:\GitWell\Well\WpfApp\ListGroupItem\obj\Debug\ListGroupItem.csproj.GenerateResource.Cache
+D:\GitWell\Well\WpfApp\ListGroupItem\obj\Debug\ListGroupItem.csproj.CoreCompileInputs.cache
+D:\GitWell\Well\WpfApp\ListGroupItem\obj\Debug\ListGroupItem.exe
+D:\GitWell\Well\WpfApp\ListGroupItem\obj\Debug\ListGroupItem.pdb
+D:\GitWell\Well\WpfApp\ListGroupItem\obj\Debug\TestPanel.g.cs
+D:\GitWell\Well\WpfApp\ListGroupItem\obj\Debug\TestPanel.baml
