@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfApp
+namespace WpfApp.Panal.EventTest
 {
     /// <summary>
     /// EventAggregratorPanel.xaml 的交互逻辑

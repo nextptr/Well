@@ -1,0 +1,6 @@
+D:\GitWell\Well\WpfApp\CommonEventAggregator\bin\x64\Debug\CommonEventAggregator.dll
+D:\GitWell\Well\WpfApp\CommonEventAggregator\bin\x64\Debug\CommonEventAggregator.pdb
+D:\GitWell\Well\WpfApp\CommonEventAggregator\obj\x64\Debug\CommonEventAggregator.csprojResolveAssemblyReference.cache
+D:\GitWell\Well\WpfApp\CommonEventAggregator\obj\x64\Debug\CommonEventAggregator.csproj.CoreCompileInputs.cache
+D:\GitWell\Well\WpfApp\CommonEventAggregator\obj\x64\Debug\CommonEventAggregator.dll
+D:\GitWell\Well\WpfApp\CommonEventAggregator\obj\x64\Debug\CommonEventAggregator.pdb

@@ -1,0 +1,5 @@
+D:\GitWell\Well\WpfApp\ParameterManager\bin\x64\Debug\ParameterManager.dll
+D:\GitWell\Well\WpfApp\ParameterManager\bin\x64\Debug\ParameterManager.pdb
+D:\GitWell\Well\WpfApp\ParameterManager\obj\x64\Debug\ParameterManager.csproj.CoreCompileInputs.cache
+D:\GitWell\Well\WpfApp\ParameterManager\obj\x64\Debug\ParameterManager.dll
+D:\GitWell\Well\WpfApp\ParameterManager\obj\x64\Debug\ParameterManager.pdb

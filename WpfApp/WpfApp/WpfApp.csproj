@@ -74,7 +74,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="EventAggregratorPanel.xaml">
+    <Page Include="Panal\EventTest\EventAggregratorPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -86,15 +86,22 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="EventAggregratorPanel.xaml.cs">
+    <Compile Include="Panal\EventTest\EventAggregratorPanel.xaml.cs">
       <DependentUpon>EventAggregratorPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Panal\ParamTest\ParameterPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Panal\ParamTest\ParameterPanel.xaml.cs">
+      <DependentUpon>ParameterPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -125,6 +132,11 @@
       <Project>{89a76627-d601-48ea-8615-27481946eacf}</Project>
       <Name>CommonEventAggregator</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ParameterManager\ParameterManager.csproj">
+      <Project>{a3d7dd32-5198-4702-80eb-a971507eec1d}</Project>
+      <Name>ParameterManager</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<TestParam xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <DataLs>
+    <string>sads</string>
+    <string>123</string>
+    <string>123</string>
+    <string>csdvsf</string>
+  </DataLs>
+</TestParam>

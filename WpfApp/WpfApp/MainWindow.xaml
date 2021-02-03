@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp"
+        xmlns:eventtest="clr-namespace:WpfApp.Panal.EventTest"
+        xmlns:paramtest="clr-namespace:WpfApp.Panal.paramTest"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <TabControl>
@@ -11,7 +13,13 @@
             <TabItem.Header>
                 <Label Content="事件聚合器" Height="30" Width="80"/>
             </TabItem.Header>
-            <local:EventAggregratorPanel/>
+            <eventtest:EventAggregratorPanel/>
+        </TabItem>
+        <TabItem>
+            <TabItem.Header>
+                <Label Content="Param参数读写" Height="30" Width="80"/>
+            </TabItem.Header>
+            <paramtest:ParameterPanel/>
         </TabItem>
     </TabControl>
 </Window>

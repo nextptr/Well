@@ -15,6 +15,10 @@ D:\GitWell\Well\WpfApp\WpfApp\obj\x64\Debug\WpfApp.pdb
 D:\GitWell\Well\WpfApp\WpfApp\bin\x64\Debug\CommonEventAggregator.dll
 D:\GitWell\Well\WpfApp\WpfApp\bin\x64\Debug\CommonEventAggregator.pdb
 D:\GitWell\Well\WpfApp\WpfApp\obj\x64\Debug\WpfApp.csprojResolveAssemblyReference.cache
-D:\GitWell\Well\WpfApp\WpfApp\obj\x64\Debug\EventAggregratorPanel.g.cs
 D:\GitWell\Well\WpfApp\WpfApp\obj\x64\Debug\GeneratedInternalTypeHelper.g.cs
-D:\GitWell\Well\WpfApp\WpfApp\obj\x64\Debug\EventAggregratorPanel.baml
+D:\GitWell\Well\WpfApp\WpfApp\bin\x64\Debug\ParameterManager.dll
+D:\GitWell\Well\WpfApp\WpfApp\bin\x64\Debug\ParameterManager.pdb
+D:\GitWell\Well\WpfApp\WpfApp\obj\x64\Debug\Panal\EventTest\EventAggregratorPanel.g.cs
+D:\GitWell\Well\WpfApp\WpfApp\obj\x64\Debug\Panal\ParamTest\ParameterPanel.g.cs
+D:\GitWell\Well\WpfApp\WpfApp\obj\x64\Debug\Panal\EventTest\EventAggregratorPanel.baml
+D:\GitWell\Well\WpfApp\WpfApp\obj\x64\Debug\Panal\ParamTest\ParameterPanel.baml
